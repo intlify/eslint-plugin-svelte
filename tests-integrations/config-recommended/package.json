@@ -1,0 +1,13 @@
+{
+  "name": "integration-test-for-config-recommended",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@intlify/eslint-plugin-svelte": "file:../..",
+    "eslint": "^7.4.0"
+  }
+}
