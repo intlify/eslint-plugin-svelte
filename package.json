@@ -29,8 +29,8 @@
     "svelte": "^3.37.0"
   },
   "peerDependenciesMeta": {
-    "typescript": {
-      "svelte": true
+    "svelte": {
+      "optional": true
     }
   },
   "devDependencies": {
