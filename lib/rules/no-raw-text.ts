@@ -66,6 +66,7 @@ function checkSvelteMustacheTagText(
 }
 
 function create(context: RuleContext): RuleListener {
+  const sourceCode = context.getSourceCode()
   const config: Config = {
     ignorePattern: /^[^\S\s]$/,
     ignoreNodes: [],
@@ -87,7 +88,10 @@ function create(context: RuleContext): RuleListener {
   function isIgnore(node: SvAST.SvelteMustacheTag | SvAST.SvelteText) {
     const element = getElement(node)
 
-    return !element || config.ignoreNodes.includes(element.name.name)
+    return (
+      !element ||
+      config.ignoreNodes.includes(sourceCode.text.slice(...element.name.range!))
+    )
   }
   function getElement(node: SvAST.SvelteMustacheTag | SvAST.SvelteText) {
     let target:
