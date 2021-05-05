@@ -96,6 +96,7 @@ function create(context: RuleContext): RuleListener {
   function getElement(node: SvAST.SvelteMustacheTag | SvAST.SvelteText) {
     let target:
       | SvAST.SvelteText['parent']
+      | SvAST.SvelteMustacheTag['parent']
       | SvAST.SvelteElement
       | SvAST.SvelteAwaitBlock = node.parent
     while (

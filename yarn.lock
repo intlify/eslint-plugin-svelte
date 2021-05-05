@@ -10011,10 +10011,10 @@ supports-color@^7.1.0:
   dependencies:
     has-flag "^4.0.0"
 
-svelte-eslint-parser@^0.0.8:
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/svelte-eslint-parser/-/svelte-eslint-parser-0.0.8.tgz#7f854ef56028e88a69dad665a847599bfc0b5eab"
-  integrity sha512-nd3TceSXzRUd/c3x2m4FZIFkkgKjkVPRZlOI+tZhOZMeq1BTwS6+LAZjYFvOg86kMmQrjp9GXKmhngOhGwX5fg==
+svelte-eslint-parser@^0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/svelte-eslint-parser/-/svelte-eslint-parser-0.0.9.tgz#89b1cbfff8d052cdbe6e5db03d02cd931cee4483"
+  integrity sha512-hP5VoamBKr8uL/VkryJkw37Ka4ZuYohuWb+pprQ936YCSRyQNwnl7C1740Cny+EsvXVeeHbIHo5gUJy/jRh0Fg==
   dependencies:
     eslint-visitor-keys "^2.0.0"
     espree "^7.3.1"
