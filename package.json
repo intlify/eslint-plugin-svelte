@@ -1,0 +1,101 @@
+{
+  "name": "@intlify/eslint-plugin-svelte",
+  "description": "ESLint plugin for internationalization with Svelte",
+  "version": "0.0.1",
+  "author": "Yosuke Ota (https://github.com/ota-meshi)",
+  "bugs": {
+    "url": "https://github.com/intlify/eslint-plugin-svelte/issues"
+  },
+  "changelog": {
+    "labels": {
+      "Type: Feature": ":star: Features",
+      "Type: Bug": ":bug: Bug Fixes",
+      "Type: Security": ":lock: Security Fixes",
+      "Type: Performance": ":chart_with_upwards_trend: Performance Fixes",
+      "Type: Improvement": ":zap: Improvement Features",
+      "Type: Breaking": ":boom: Breaking Change",
+      "Type: Deprecated": ":warning: Deprecated Features",
+      "Type: I18n": ":globe_with_meridians: Internationalization",
+      "Type: A11y": ":wheelchair: Accessibility",
+      "Type: Documentation": ":pencil: Documentation"
+    }
+  },
+  "dependencies": {
+    "debug": "^4.3.1",
+    "svelte-eslint-parser": "^0.1.0"
+  },
+  "peerDependencies": {
+    "eslint": "^7.0.0",
+    "svelte": "^3.37.0"
+  },
+  "peerDependenciesMeta": {
+    "svelte": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/debug": "^4.1.5",
+    "@types/eslint": "^7.2.10",
+    "@types/eslint-scope": "^3.7.0",
+    "@types/eslint-visitor-keys": "^1.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.10.0",
+    "@typescript-eslint/parser": "^4.10.0",
+    "eslint": "^7.0.0",
+    "eslint-config-prettier": "^8.0.0",
+    "eslint-plugin-markdown": "^2.0.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint4b": "^7.16.0",
+    "lerna-changelog": "^1.0.1",
+    "mocha": "^8.0.0",
+    "nyc": "^15.0.0",
+    "opener": "^1.5.1",
+    "prettier": "^2.0.5",
+    "rimraf": "^3.0.0",
+    "shipjs": "^0.23.0",
+    "svelte": "^3.37.0",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.0",
+    "vue-eslint-editor": "^1.1.0",
+    "vue-eslint-parser": "^7.6.0",
+    "vue-github-button": "^1.2.0",
+    "vuepress": "^1.5.2"
+  },
+  "engines": {
+    "node": ">=10.13.0 || >=12.0.0 || >= 14.0.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/intlify/eslint-plugin-svelte#readme",
+  "keywords": [
+    "eslint",
+    "eslint-plugin",
+    "eslintplugin",
+    "i18n",
+    "internationalization",
+    "svelte",
+    "sveltejs"
+  ],
+  "license": "MIT",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/intlify/eslint-plugin-svelte.git"
+  },
+  "scripts": {
+    "build": "tsc --project ./tsconfig.build.json",
+    "clean": "rimraf .nyc_output coverage dist docs/.vuepress/dist",
+    "coverage": "nyc report --reporter lcov && opener coverage/lcov-report/index.html",
+    "docs": "npm run build && vuepress dev docs",
+    "docs:build": "npm run build && vuepress build docs",
+    "generate": "ts-node --transpile-only scripts/update.ts && prettier . --write",
+    "lint": "eslint . --ext js,ts,vue,md --ignore-pattern \"/tests/fixtures\"",
+    "lint:docs": "prettier docs --check",
+    "release:prepare": "shipjs prepare",
+    "release:trigger": "shipjs trigger",
+    "test": "mocha --require ts-node/register \"./tests/**/*.ts\"",
+    "test:debug": "mocha --require ts-node/register/transpile-only \"./tests/**/*.ts\"",
+    "test:coverage": "nyc mocha --require ts-node/register \"./tests/**/*.ts\" --timeout 60000",
+    "test:integrations": "mocha ./tests-integrations/*.js --timeout 60000"
+  }
+}
