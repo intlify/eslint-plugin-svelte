@@ -12,7 +12,7 @@ function toTableRow(rule: RuleInfo) {
   const mark = `${rule.recommended ? ':star:' : ''}${
     rule.fixable ? ':black_nib:' : ''
   }`
-  const link = `[@intlify/svelte/<wbr>${rule.name}](./${rule.name}.html)`
+  const link = `[@intlify/svelte/<wbr>${rule.name}](./${rule.name}.md)`
   const description = rule.description || '(no description)'
   return `| ${link} | ${description} | ${mark} |`
 }

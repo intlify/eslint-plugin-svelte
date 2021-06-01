@@ -40,7 +40,7 @@ module.export = {
 }
 ```
 
-See [the rule list](../rules/)
+See [the rule list](./rules/README.md)
 
 ### Running ESLint from command line
 
