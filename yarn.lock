@@ -4283,6 +4283,11 @@ eslint-visitor-keys@^2.0.0:
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-2.0.0.tgz#21fdc8fbcd9c795cc0321f0563702095751511a8"
   integrity sha512-QudtT6av5WXels9WjIM7qz1XD1cWGvX4gGXvp/zBn9nXG02D0utdU3Em2m/QjTnrsk6bBjmCygl3rmj118msQQ==
 
+eslint-visitor-keys@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-3.0.0.tgz#e32e99c6cdc2eb063f204eda5db67bfe58bb4186"
+  integrity sha512-mJOZa35trBTb3IyRmo8xmKBZlxf+N7OnUl4+ZhJHs/r+0770Wh/LEACE2pqMGMe27G/4y8P2bYGk4J70IC5k1Q==
+
 eslint4b@^7.16.0:
   version "7.16.0"
   resolved "https://registry.yarnpkg.com/eslint4b/-/eslint4b-7.16.0.tgz#6bea3e3440814828deef6e5e9e42448603edf3b2"
@@ -10011,13 +10016,13 @@ supports-color@^7.1.0:
   dependencies:
     has-flag "^4.0.0"
 
-svelte-eslint-parser@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/svelte-eslint-parser/-/svelte-eslint-parser-0.1.0.tgz#56a627892245117ee16ae36d18c6c1a708a663f0"
-  integrity sha512-Qi+tqus7uKe9F0yQSdHE4rLLGHqFsopuy94MLV/OVmst+XCcD/fr/QTVNtgD1zmUs2iTAuN028GksIm87WihIg==
+svelte-eslint-parser@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/svelte-eslint-parser/-/svelte-eslint-parser-0.4.1.tgz#ac645aea60a3dfa977b2693aaa654210f193ae9a"
+  integrity sha512-OoCyDI+0O7BjOCHxLiQMsS6e02T/ahh5u7o+CiQBM4RoChadYn/AfgR9SaIMHL2P+aVToxPnX94sC5e482w/Lg==
   dependencies:
     eslint-scope "^5.1.1"
-    eslint-visitor-keys "^2.0.0"
+    eslint-visitor-keys "^3.0.0"
     espree "^7.3.1"
 
 svelte@^3.37.0:
