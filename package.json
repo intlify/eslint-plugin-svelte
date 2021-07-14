@@ -2,6 +2,9 @@
   "name": "@intlify/eslint-plugin-svelte",
   "description": "ESLint plugin for internationalization with Svelte",
   "version": "0.0.1",
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "Yosuke Ota (https://github.com/ota-meshi)",
   "bugs": {
     "url": "https://github.com/intlify/eslint-plugin-svelte/issues"
