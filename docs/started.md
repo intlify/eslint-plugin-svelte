@@ -11,7 +11,7 @@ npm install --save-dev eslint @intlify/eslint-plugin-svelte
 ::: tip Requirements
 
 - ESLint v7.0.0 or later
-- Node.js v10.13.0 or later
+- Node.js v12.x, v14.x or later
 
 :::
 
