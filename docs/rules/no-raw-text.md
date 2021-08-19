@@ -1,6 +1,7 @@
 ---
 title: '@intlify/svelte/no-raw-text'
 description: disallow to string literal in template
+since: v0.0.1
 ---
 
 # @intlify/svelte/no-raw-text
@@ -65,6 +66,10 @@ This rule encourage i18n in about the application needs to be localized.
 - `ignoreNodes`: specify nodes to ignore such as icon components
 - `ignorePattern`: specify a regexp pattern that matches strings to ignore
 - `ignoreText`: specify an array of strings to ignore
+
+## :rocket: Version
+
+This rule was introduced in `@intlify/eslint-plugin-svelte` v0.0.1
 
 ## :mag: Implementation
 
