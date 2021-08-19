@@ -28,7 +28,7 @@
     "svelte-eslint-parser": "^0.4.1"
   },
   "peerDependencies": {
-    "eslint": "^7.0.0",
+    "eslint": "^7.0.0 || ^8.0.0-0",
     "svelte": "^3.37.0"
   },
   "peerDependenciesMeta": {
