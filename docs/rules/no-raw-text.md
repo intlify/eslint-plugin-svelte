@@ -1,7 +1,7 @@
 ---
 title: '@intlify/svelte/no-raw-text'
 description: disallow to string literal in template
-since: v0.0.2
+since: v0.0.1
 ---
 
 # @intlify/svelte/no-raw-text
@@ -69,7 +69,7 @@ This rule encourage i18n in about the application needs to be localized.
 
 ## :rocket: Version
 
-This rule was introduced in `@intlify/eslint-plugin-svelte` v0.0.2
+This rule was introduced in `@intlify/eslint-plugin-svelte` v0.0.1
 
 ## :mag: Implementation
 
