@@ -38,19 +38,6 @@ module.exports = {
     },
     nav: [
       {
-        text: 'Support Intlify',
-        items: [
-          {
-            text: 'GitHub Sponsors',
-            link: 'https://github.com/sponsors/kazupon'
-          },
-          {
-            text: 'Patreon',
-            link: 'https://www.patreon.com/kazupon'
-          }
-        ]
-      },
-      {
         text: 'Release Notes',
         link: 'https://github.com/intlify/eslint-plugin-svelte/releases'
       }

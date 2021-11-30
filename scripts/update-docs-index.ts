@@ -44,5 +44,6 @@ ${withCategories
   .filter(({ rules }) => rules.length)
   .map(toCategorySection)
   .join('\n')}
+**If you have any ideas for new rules, please open an [issue](https://github.com/intlify/eslint-plugin-svelte/issues).**
 `
 )

@@ -148,7 +148,7 @@ eslint --ext .js,.svelte src
 eslint "src/**/*.{js,svelte}"
 ```
 
-## :flying_saucer: More Plugins
+## 🛸 More Plugins
 
 ### [@ota-meshi/eslint-plugin-svelte](https://ota-meshi.github.io/eslint-plugin-svelte/)
 
