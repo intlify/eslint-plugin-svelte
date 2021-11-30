@@ -9,4 +9,3 @@
 | Rule ID | Description |    |
 |:--------|:------------|:---|
 | [@intlify/svelte/<wbr>no-raw-text](./no-raw-text.md) | disallow to string literal in template | :star: |
-

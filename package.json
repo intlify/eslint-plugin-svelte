@@ -94,6 +94,7 @@
     "generate": "ts-node --transpile-only scripts/update.ts && prettier . --write",
     "lint": "eslint . --ext js,ts,vue,md --ignore-pattern \"/tests/fixtures\"",
     "lint:docs": "prettier docs --check",
+    "format:docs": "prettier docs --write",
     "release:prepare": "shipjs prepare",
     "release:trigger": "shipjs trigger",
     "test": "mocha --require ts-node/register \"./tests/**/*.ts\"",
