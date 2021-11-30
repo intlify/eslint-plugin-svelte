@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "debug": "^4.3.1",
-    "svelte-eslint-parser": "^0.4.1"
+    "svelte-eslint-parser": "^0.8.0"
   },
   "peerDependencies": {
     "eslint": "^7.0.0 || ^8.0.0-0",
@@ -94,6 +94,7 @@
     "generate": "ts-node --transpile-only scripts/update.ts && prettier . --write",
     "lint": "eslint . --ext js,ts,vue,md --ignore-pattern \"/tests/fixtures\"",
     "lint:docs": "prettier docs --check",
+    "format:docs": "prettier docs --write",
     "release:prepare": "shipjs prepare",
     "release:trigger": "shipjs trigger",
     "test": "mocha --require ts-node/register \"./tests/**/*.ts\"",

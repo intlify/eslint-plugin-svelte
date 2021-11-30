@@ -55,6 +55,17 @@ This rule encourage i18n in about the application needs to be localized.
   "@intlify/svelte/no-raw-text": [
     "error",
     {
+      "attributes": {
+        "/.+/": [
+          "title",
+          "aria-label",
+          "aria-placeholder",
+          "aria-roledescription",
+          "aria-valuetext"
+        ],
+        "input": ["placeholder"],
+        "img": ["alt"]
+      },
       "ignoreNodes": ["md-icon", "v-icon"],
       "ignorePattern": "^[-#:()&]+$",
       "ignoreText": ["EUR", "HKD", "USD"]
@@ -63,9 +74,43 @@ This rule encourage i18n in about the application needs to be localized.
 }
 ```
 
+- `attributes`: An object whose keys are tag name or patterns and value is an array of attributes to check for that tag name. Default empty.
 - `ignoreNodes`: specify nodes to ignore such as icon components
 - `ignorePattern`: specify a regexp pattern that matches strings to ignore
 - `ignoreText`: specify an array of strings to ignore
+
+### `attributes`
+
+<eslint-code-block>
+
+<!-- eslint-skip -->
+
+```svelte
+<script>
+  /* eslint @intlify/svelte/no-raw-text: ['error', {attributes: { '/.+/': ['label'] }}] */
+</script>
+<!-- ✗ BAD -->
+<MyInput label="hello" />
+<AnyComponent label="hello" />
+```
+
+</eslint-code-block>
+
+<eslint-code-block>
+
+<!-- eslint-skip -->
+
+```svelte
+<script>
+  /* eslint @intlify/svelte/no-raw-text: ['error', {attributes: { 'MyInput': ['label'] }}] */
+</script>
+<!-- ✗ BAD -->
+<MyInput label="hello" />
+<!-- ✓ GOOD -->
+<OtherComponent label="hello" />
+```
+
+</eslint-code-block>
 
 ## :rocket: Version
 
