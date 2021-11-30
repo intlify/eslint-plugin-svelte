@@ -6,21 +6,61 @@ import type ESTree from 'estree'
 import type { RuleContext, RuleListener } from '../types'
 import { defineRule } from '../utils'
 
-type AnyValue = ESTree.Literal['value']
+type LiteralValue = ESTree.Literal['value']
+type StaticTemplateLiteral = ESTree.TemplateLiteral & {
+  quasis: [ESTree.TemplateElement]
+  expressions: [/* empty */]
+}
+type TargetAttrs = { name: RegExp; attrs: Set<string> }
 type Config = {
+  attributes: TargetAttrs[]
   ignorePattern: RegExp
   ignoreNodes: string[]
   ignoreText: string[]
 }
+const RE_REGEXP_STR = /^\/(.+)\/(.*)$/u
+function toRegExp(str: string): RegExp {
+  const parts = RE_REGEXP_STR.exec(str)
+  if (parts) {
+    return new RegExp(parts[1], parts[2])
+  }
+  return new RegExp(`^${escape(str)}$`)
+}
 const hasOnlyWhitespace = (value: string) => /^[\r\n\s\t\f\v]+$/.test(value)
 
-function isValidValue(value: AnyValue, config: Config) {
-  return (
-    typeof value !== 'string' ||
-    hasOnlyWhitespace(value) ||
-    config.ignorePattern.test(value.trim()) ||
-    config.ignoreText.includes(value.trim())
+/**
+ * Get the attribute to be verified from the element name.
+ */
+function getTargetAttrs(tagName: string, config: Config): Set<string> {
+  const result = []
+  for (const { name, attrs } of config.attributes) {
+    name.lastIndex = 0
+    if (name.test(tagName)) {
+      result.push(...attrs)
+    }
+  }
+
+  return new Set(result)
+}
+
+function isStaticTemplateLiteral(
+  node: ESTree.Expression | ESTree.Pattern
+): node is StaticTemplateLiteral {
+  return Boolean(
+    node && node.type === 'TemplateLiteral' && node.expressions.length === 0
   )
+}
+
+function testValue(value: LiteralValue, config: Config): boolean {
+  if (typeof value === 'string') {
+    return (
+      hasOnlyWhitespace(value) ||
+      config.ignorePattern.test(value.trim()) ||
+      config.ignoreText.includes(value.trim())
+    )
+  } else {
+    return false
+  }
 }
 
 function checkSvelteMustacheTagText(
@@ -34,41 +74,90 @@ function checkSvelteMustacheTagText(
 
   if (node.parent.type === 'SvelteElement') {
     // parent is element (e.g. <p>{ ... }</p>)
-    if (node.expression.type === 'Literal') {
-      const literalNode = node.expression
-      if (isValidValue(literalNode.value, config)) {
-        return
-      }
-
-      context.report({
-        node: literalNode,
-        message: `raw text '${literalNode.value}' is used`
-      })
-    } else if (node.expression.type === 'ConditionalExpression') {
-      for (const target of [
-        node.expression.consequent,
-        node.expression.alternate
-      ]) {
-        if (target.type !== 'Literal') {
-          continue
-        }
-        if (isValidValue(target.value, config)) {
-          continue
-        }
-
-        context.report({
-          node: target,
-          message: `raw text '${target.value}' is used`
-        })
-      }
-    }
+    checkExpressionText(context, node.expression, config)
   }
+}
+
+function checkExpressionText(
+  context: RuleContext,
+  expression: ESTree.Expression,
+  config: Config
+) {
+  if (expression.type === 'Literal') {
+    checkLiteral(context, expression, config)
+  } else if (isStaticTemplateLiteral(expression)) {
+    checkLiteral(context, expression, config)
+  } else if (expression.type === 'ConditionalExpression') {
+    const targets = [expression.consequent, expression.alternate]
+    targets.forEach(target => {
+      if (target.type === 'Literal') {
+        checkLiteral(context, target, config)
+      } else if (isStaticTemplateLiteral(target)) {
+        checkLiteral(context, target, config)
+      }
+    })
+  }
+}
+
+function checkSvelteLiteralOrText(
+  context: RuleContext,
+  literal: SvAST.SvelteLiteral | SvAST.SvelteText,
+  config: Config
+) {
+  if (testValue(literal.value, config)) {
+    return
+  }
+
+  const loc = literal.loc!
+  context.report({
+    loc,
+    message: `raw text '${literal.value}' is used`
+  })
+}
+
+function checkLiteral(
+  context: RuleContext,
+  literal: ESTree.Literal | StaticTemplateLiteral,
+  config: Config
+) {
+  const value =
+    literal.type !== 'TemplateLiteral'
+      ? literal.value
+      : literal.quasis[0].value.cooked
+
+  if (testValue(value, config)) {
+    return
+  }
+
+  const loc = literal.loc!
+  context.report({
+    loc,
+    message: `raw text '${value}' is used`
+  })
+}
+/**
+ * Parse attributes option
+ */
+function parseTargetAttrs(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  options: any
+) {
+  const regexps: TargetAttrs[] = []
+  for (const tagName of Object.keys(options)) {
+    const attrs: Set<string> = new Set(options[tagName])
+    regexps.push({
+      name: toRegExp(tagName),
+      attrs
+    })
+  }
+  return regexps
 }
 
 function create(context: RuleContext): RuleListener {
   const sourceCode = context.getSourceCode()
   const config: Config = {
-    ignorePattern: /^[^\S\s]$/,
+    attributes: [],
+    ignorePattern: /^$/,
     ignoreNodes: [],
     ignoreText: []
   }
@@ -76,13 +165,14 @@ function create(context: RuleContext): RuleListener {
   if (context.options[0]?.ignorePattern) {
     config.ignorePattern = new RegExp(context.options[0].ignorePattern, 'u')
   }
-
   if (context.options[0]?.ignoreNodes) {
     config.ignoreNodes = context.options[0].ignoreNodes
   }
-
   if (context.options[0]?.ignoreText) {
     config.ignoreText = context.options[0].ignoreText
+  }
+  if (context.options[0]?.attributes) {
+    config.attributes = parseTargetAttrs(context.options[0].attributes)
   }
 
   function isIgnore(node: SvAST.SvelteMustacheTag | SvAST.SvelteText) {
@@ -98,7 +188,8 @@ function create(context: RuleContext): RuleListener {
       | SvAST.SvelteText['parent']
       | SvAST.SvelteMustacheTag['parent']
       | SvAST.SvelteElement
-      | SvAST.SvelteAwaitBlock = node.parent
+      | SvAST.SvelteAwaitBlock
+      | SvAST.SvelteElseBlockElseIf = node.parent
     while (
       target.type === 'SvelteIfBlock' ||
       target.type === 'SvelteElseBlock' ||
@@ -118,6 +209,19 @@ function create(context: RuleContext): RuleListener {
   }
 
   return {
+    SvelteAttribute(node: SvAST.SvelteAttribute) {
+      if (node.value.length !== 1 || node.value[0].type !== 'SvelteLiteral') {
+        return
+      }
+      const nameNode = node.parent.parent.name
+      const tagName = sourceCode.text.slice(...nameNode.range!)
+      const attrName = node.key.name
+      if (!getTargetAttrs(tagName, config).has(attrName)) {
+        return
+      }
+
+      checkSvelteLiteralOrText(context, node.value[0], config)
+    },
     SvelteMustacheTag(node: SvAST.SvelteMustacheTag) {
       if (isIgnore(node)) {
         return
@@ -129,15 +233,7 @@ function create(context: RuleContext): RuleListener {
       if (isIgnore(node)) {
         return
       }
-
-      if (isValidValue(node.value, config)) {
-        return
-      }
-
-      context.report({
-        node,
-        message: `raw text '${node.value}' is used`
-      })
+      checkSvelteLiteralOrText(context, node, config)
     }
   }
 }
@@ -154,6 +250,17 @@ export = defineRule('no-raw-text', {
       {
         type: 'object',
         properties: {
+          attributes: {
+            type: 'object',
+            patternProperties: {
+              '^(?:\\S+|/.*/[a-z]*)$': {
+                type: 'array',
+                items: { type: 'string' },
+                uniqueItems: true
+              }
+            },
+            additionalProperties: false
+          },
           ignoreNodes: {
             type: 'array'
           },

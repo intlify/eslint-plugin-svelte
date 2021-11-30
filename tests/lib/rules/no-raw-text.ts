@@ -181,6 +181,49 @@ tester.run('no-raw-text', rule as never, {
           line: 3
         }
       ]
+    },
+    {
+      code: `
+      <MyInput label="hello" />
+      <AnyComponent label="hello" />`,
+      options: [
+        {
+          attributes: {
+            '/.*/': ['label']
+          }
+        }
+      ],
+      errors: [
+        {
+          message: "raw text 'hello' is used",
+          line: 2,
+          column: 23
+        },
+        {
+          message: "raw text 'hello' is used",
+          line: 3,
+          column: 28
+        }
+      ]
+    },
+    {
+      code: `
+      <MyInput label="hello" />
+      <OtherInput label='raw' />`,
+      options: [
+        {
+          attributes: {
+            MyInput: ['label']
+          }
+        }
+      ],
+      errors: [
+        {
+          message: "raw text 'hello' is used",
+          line: 2,
+          column: 23
+        }
+      ]
     }
   ]
 })
