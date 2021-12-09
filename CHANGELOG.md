@@ -1,4 +1,10 @@
 
+
+## v0.1.1 (2021-12-09)
+
+#### :bug: Bug Fixes
+* [#6](https://github.com/intlify/eslint-plugin-svelte/pull/6) Update parser
+
 ## v0.1.0 (2021-11-30)
 
 #### :star: Features
