@@ -1,7 +1,7 @@
 {
   "name": "@intlify/eslint-plugin-svelte",
   "description": "ESLint plugin for internationalization with Svelte",
-  "version": "0.2.0",
+  "version": "0.1.1",
   "publishConfig": {
     "access": "public"
   },
