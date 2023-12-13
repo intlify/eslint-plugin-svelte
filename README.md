@@ -1,6 +1,6 @@
 <h1 align="center">@intlify/eslint-plugin-svelte</h1>
 <p align="center">
-  <a href="https://github.com/intlify/eslint-plugin-svelte/actions?query=workflow%3ATest"><img src="https://github.com/intlify/eslint-plugin-svelte/workflows/Test/badge.svg?branch=main" alt="Test Status"></a>
+  <a href="https://github.com/intlify/eslint-plugin-svelte/actions/workflows/test.yml"><img src="https://github.com/intlify/eslint-plugin-svelte/actions/workflows/test.yml/badge.svg?branch=main" alt="Test Status"></a>
 </p>
 <p align="center">
   <a href="https://www.npmjs.com/package/@intlify/eslint-plugin-svelte"><img src="https://img.shields.io/npm/v/@intlify/eslint-plugin-svelte.svg" alt="NPM"></a>
