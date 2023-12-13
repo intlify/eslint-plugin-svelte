@@ -1,5 +1,6 @@
 name: publish
 on:
+  workflow_dispatch: null
   push:
     tags:
       - "*"
@@ -21,6 +22,6 @@ jobs:
     - name: check can npm-publish
       run: npx can-npm-publish
     - name: release
-      run: yarn publish
+      run: npm publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_ORG_TOKEN }}
