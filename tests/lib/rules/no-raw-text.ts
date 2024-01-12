@@ -47,6 +47,12 @@ tester.run('no-raw-text', rule as never, {
       <p>world</p>
       `,
       options: [{ ignoreText: ['hello', 'world'] }]
+    },
+    {
+      code: `
+        { $_('root level translation') }
+      `,
+      options: []
     }
   ],
 
@@ -222,6 +228,19 @@ tester.run('no-raw-text', rule as never, {
           message: "raw text 'hello' is used",
           line: 2,
           column: 23
+        }
+      ]
+    },
+    {
+      code: `
+        <script>
+        </script>
+        
+        text at the root of the template
+      `,
+      errors: [
+        {
+          message: "raw text 'text at the root of the template' is used"
         }
       ]
     }
