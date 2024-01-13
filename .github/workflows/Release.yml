@@ -27,7 +27,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
       - name: Install Dependencies
-        run: yarn install --ignore-engines
+        run: yarn install
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
