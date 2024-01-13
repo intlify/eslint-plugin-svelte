@@ -27,16 +27,16 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
       - name: Install Dependencies
-        run: pnpm install
+        run: yarn install --ignore-engines
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1
         with:
           # this expects you to have a npm script called version that runs some logic and then calls `changeset version`.
-          version: pnpm run version:ci
+          version: yarn version:ci
           # This expects you to have a script called release which does a build for your packages and calls changeset publish
-          publish: pnpm run release
+          publish: yarn release
           commit: 'chore: release @intlify/eslint-plugin-svelte'
           title: 'chore: release @intlify/eslint-plugin-svelte'
         env:
