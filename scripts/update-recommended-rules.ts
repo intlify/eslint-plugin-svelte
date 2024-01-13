@@ -3,13 +3,13 @@
  * @author kazuya kawaguchi (a.k.a. kazupon)
  * Forked by https://github.com/mysticatea/eslint-plugin-eslint-comments/tree/master/scripts/update-recommended-rules.js
  */
-import { writeFileSync } from 'fs'
 import { resolve } from 'path'
 import rules from './lib/rules'
 import { format } from './lib/utils'
+import { writeAndFormat } from './lib/write'
 
 // recommended.ts
-writeFileSync(
+writeAndFormat(
   resolve(__dirname, '../lib/configs/recommended.ts'),
   format(
     `/** DON'T EDIT THIS FILE; was created by scripts. */
