@@ -3,17 +3,17 @@
  * @author kazuya kawaguchi (a.k.a. kazupon)
  * Forked by https://github.com/mysticatea/eslint-plugin-eslint-comments/tree/master/scripts/update.js
  */
-import { writeFileSync } from 'fs'
 import { resolve } from 'path'
 import { createIndex } from './lib/utils'
 
 // docs.
-import { updateRuleDocs } from './update-rule-docs'
-updateRuleDocs()
+import './update-rule-docs'
 import './update-docs-index'
 
 // recommended rules.
 import './update-recommended-rules'
+import './update-meta'
+import { writeAndFormat } from './lib/write'
 
 // indices.
 for (const pairs of [
@@ -22,5 +22,5 @@ for (const pairs of [
   // [resolve(__dirname, '../lib/utils'), '', true]
 ] as const) {
   const [dirPath, prefix = undefined, all = undefined] = pairs
-  writeFileSync(`${dirPath}.ts`, createIndex(dirPath, prefix, all))
+  writeAndFormat(`${dirPath}.ts`, createIndex(dirPath, prefix, all))
 }

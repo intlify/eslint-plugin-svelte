@@ -7,12 +7,13 @@ import { writeFileSync, readFileSync } from 'fs'
 import { join } from 'path'
 import type { RuleInfo } from './lib/rules'
 import rules from './lib/rules'
+import { getNewVersion } from './lib/changesets-util'
 const PLACE_HOLDER = /#[^\n]*\n+> .+\n+(?:- .+\n)*\n*/u
 
-export function updateRuleDocs({
-  nextVersion
-}: { nextVersion?: string } = {}): void {
-  function pickSince(content: string) {
+updateRuleDocs()
+
+async function updateRuleDocs(): Promise<void> {
+  async function pickSince(content: string) {
     const fileIntro = /^---\n(.*\n)+?---\n*/g.exec(content)
     if (fileIntro) {
       const since = /since: (v\d+\.\d+\.\d+)/.exec(fileIntro[0])
@@ -20,8 +21,9 @@ export function updateRuleDocs({
         return since[1]
       }
     }
-    if (nextVersion) {
-      return `v${nextVersion}`
+    // eslint-disable-next-line no-process-env -- ignore
+    if (process.env.IN_VERSION_CI_SCRIPT) {
+      return getNewVersion().then(v => `v${v}`)
     }
     return null
   }
@@ -30,7 +32,7 @@ export function updateRuleDocs({
     private rule: RuleInfo
     private filePath: string
     private content: string
-    private since: string | null
+    private since: Promise<string | null>
     constructor(rule: RuleInfo) {
       this.rule = rule
       this.filePath = join(__dirname, `../docs/rules/${rule.name}.md`)
@@ -41,15 +43,17 @@ export function updateRuleDocs({
     write() {
       writeFileSync(this.filePath, this.content)
     }
-    updateFileIntro() {
+    async updateFileIntro() {
       const rule = this.rule
+
+      const since = await this.since
 
       const fileIntro = {
         // pageClass: 'rule-details',
         // sidebarDepth: 0,
         title: `'${rule.id}'`,
         description: rule.description,
-        ...(this.since ? { since: this.since } : {})
+        ...(since ? { since } : {})
       }
       const computed = `---\n${Object.entries(fileIntro)
         .map(item => `${item[0]}: ${item[1]}`)
@@ -122,14 +126,15 @@ export function updateRuleDocs({
       return this
     }
 
-    updateFooter() {
+    async updateFooter() {
       const { name } = this.rule
       const footerPattern = /## (?::mag: Implementation|:rocket: Version).+$/s
+      const since = await this.since
       const footer = `${
-        this.since
+        since
           ? `## :rocket: Version
 
-This rule was introduced in \`@intlify/eslint-plugin-svelte\` ${this.since}
+This rule was introduced in \`@intlify/eslint-plugin-svelte\` ${since}
 
 `
           : ''
@@ -149,11 +154,11 @@ This rule was introduced in \`@intlify/eslint-plugin-svelte\` ${this.since}
   }
 
   for (const rule of rules) {
-    new DocFile(rule)
-      .updateFileIntro()
-      .updateHeader()
-      .updateCodeBlocks()
-      .updateFooter()
-      .write()
+    const doc = new DocFile(rule)
+    await doc.updateFileIntro()
+    doc.updateHeader()
+    doc.updateCodeBlocks()
+    await doc.updateFooter()
+    doc.write()
   }
 }

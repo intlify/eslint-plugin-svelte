@@ -137,9 +137,10 @@ export interface SourceCode extends TokenStore {
   getText(node?: NodeWithLoc, beforeCount?: number, afterCount?: number): string
   getLines(): string[]
   getAllComments(): TokenWithLoc[]
-  getComments(
-    node: NodeWithLoc
-  ): { leading: TokenWithLoc[]; trailing: TokenWithLoc[] }
+  getComments(node: NodeWithLoc): {
+    leading: TokenWithLoc[]
+    trailing: TokenWithLoc[]
+  }
   getJSDocComment(node: NodeWithLoc): TokenWithLoc | null
   getNodeByRangeIndex(index: number): NodeWithLoc
   isSpaceBetweenTokens(first: TokenWithLoc, second: TokenWithLoc): boolean
