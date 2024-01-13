@@ -19,8 +19,8 @@ describe('Integration with "plugin:@intlify/svelte/recommended"', () => {
   })
 
   it('should work with shareable config', () => {
-    const CLIEngine = require('./config-recommended/node_modules/eslint')
-      .CLIEngine
+    const CLIEngine =
+      require('./config-recommended/node_modules/eslint').CLIEngine
     const engine = new CLIEngine({
       cwd: TEST_CWD,
       extensions: ['.js', '.svelte', '.json']

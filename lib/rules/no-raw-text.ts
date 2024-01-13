@@ -9,7 +9,9 @@ import { defineRule } from '../utils'
 type LiteralValue = ESTree.Literal['value']
 type StaticTemplateLiteral = ESTree.TemplateLiteral & {
   quasis: [ESTree.TemplateElement]
-  expressions: [/* empty */]
+  expressions: [
+    /* empty */
+  ]
 }
 type TargetAttrs = { name: RegExp; attrs: Set<string> }
 type Config = {

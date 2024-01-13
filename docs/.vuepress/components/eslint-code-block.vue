@@ -130,15 +130,12 @@ export default {
     this.height = `${Math.max(120, 19 * lines)}px`
 
     // Load linter.
-    const [
-      { default: Linter },
-      { default: coreRules },
-      svelteESLintParser
-    ] = await Promise.all([
-      import('eslint4b/dist/linter'),
-      import('eslint4b/dist/core-rules'),
-      import('espree').then(() => import('svelte-eslint-parser'))
-    ])
+    const [{ default: Linter }, { default: coreRules }, svelteESLintParser] =
+      await Promise.all([
+        import('eslint4b/dist/linter'),
+        import('eslint4b/dist/core-rules'),
+        import('espree').then(() => import('svelte-eslint-parser'))
+      ])
 
     const linter = (this.linter = new Linter({ cwd: '/path' }))
 
