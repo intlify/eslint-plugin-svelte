@@ -113,7 +113,7 @@ function checkSvelteLiteralOrText(
   const loc = literal.loc!
   context.report({
     loc,
-    message: `raw text '${literal.value}' is used`
+    message: `raw text '${literal.value.trim()}' is used`
   })
 }
 
@@ -134,7 +134,7 @@ function checkLiteral(
   const loc = literal.loc!
   context.report({
     loc,
-    message: `raw text '${value}' is used`
+    message: `raw text '${String(value).trim()}' is used`
   })
 }
 /**
@@ -157,6 +157,7 @@ function parseTargetAttrs(
 
 function create(context: RuleContext): RuleListener {
   const sourceCode = context.getSourceCode()
+
   const config: Config = {
     attributes: [],
     ignorePattern: /^$/,
@@ -180,9 +181,12 @@ function create(context: RuleContext): RuleListener {
   function isIgnore(node: SvAST.SvelteMustacheTag | SvAST.SvelteText) {
     const element = getElement(node)
 
-    return (
-      !element ||
-      config.ignoreNodes.includes(sourceCode.text.slice(...element.name.range!))
+    if (!element) {
+      return false
+    }
+
+    return config.ignoreNodes.includes(
+      sourceCode.text.slice(...element.name.range!)
     )
   }
   function getElement(node: SvAST.SvelteMustacheTag | SvAST.SvelteText) {
