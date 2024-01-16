@@ -111,7 +111,7 @@ function checkSvelteLiteralOrText(
   const loc = literal.loc!
   context.report({
     loc,
-    message: `raw text '${literal.value.trimStart().trimEnd()}' is used`
+    message: `raw text '${literal.value.trim()}' is used`
   })
 }
 
