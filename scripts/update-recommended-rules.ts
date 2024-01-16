@@ -5,14 +5,12 @@
  */
 import { resolve } from 'path'
 import rules from './lib/rules'
-import { format } from './lib/utils'
 import { writeAndFormat } from './lib/write'
 
 // recommended.ts
 writeAndFormat(
   resolve(__dirname, '../lib/configs/recommended.ts'),
-  format(
-    `/** DON'T EDIT THIS FILE; was created by scripts. */
+  `/** DON'T EDIT THIS FILE; was created by scripts. */
 export = {
   extends: [require.resolve('./base')],
   parserOptions: {
@@ -32,7 +30,5 @@ export = {
       .map(rule => `'${rule.id}': 'warn',`)
       .join('\n        ')}
   },
-}`,
-    resolve(__dirname, '../lib/configs/recommended.ts')
-  )
+}`
 )

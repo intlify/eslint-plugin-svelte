@@ -5,13 +5,6 @@
  */
 import { readdirSync, existsSync } from 'fs'
 import { basename, extname, join } from 'path'
-import { CLIEngine } from 'eslint'
-const linter = new CLIEngine({ fix: true })
-
-function format(text: string, filename: string): string {
-  const lintResult = linter.executeOnText(text, filename)
-  return lintResult.results[0].output || text
-}
 
 /**
  * Convert text to camelCase
@@ -28,8 +21,7 @@ function createIndex(dirPath: string, prefix = '', all = false): string {
         file.endsWith('.ts') || existsSync(join(dirPath, file, 'index.ts'))
     )
     .map(file => basename(file, extname(file)))
-  return format(
-    `/** DON'T EDIT THIS FILE; was created by scripts. */
+  return `/** DON'T EDIT THIS FILE; was created by scripts. */
 ${tsFiles
   .map(
     id =>
@@ -40,9 +32,7 @@ ${tsFiles
 export = {
     ${tsFiles.map(id => `'${prefix}${id}': ${camelCase(id)},`).join('\n    ')}
   }
-  `,
-    'input.ts'
-  )
+  `
 }
 
-export { createIndex, format }
+export { createIndex }

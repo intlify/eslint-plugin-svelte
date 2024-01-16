@@ -1,5 +1,5 @@
 ---
-"@intlify/eslint-plugin-svelte": minor
+'@intlify/eslint-plugin-svelte': minor
 ---
 
 Apply rule against root-level strings
