@@ -132,7 +132,7 @@ function checkLiteral(
   const loc = literal.loc!
   context.report({
     loc,
-    message: `raw text '${String(value).trimStart().trimEnd()}' is used`
+    message: `raw text '${String(value).trim()}' is used`
   })
 }
 /**
