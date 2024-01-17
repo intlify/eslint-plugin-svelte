@@ -1,3 +1,9 @@
+## 0.4.0
+
+### Minor Changes
+
+- [#12](https://github.com/intlify/eslint-plugin-svelte/pull/12) [`e0acb96`](https://github.com/intlify/eslint-plugin-svelte/commit/e0acb96fd492bd0b259417ea6a277b73cc4745cb) Thanks [@ota-meshi](https://github.com/ota-meshi)! - feat: add support for eslint v9
+
 ## 0.3.0
 
 ### Minor Changes
