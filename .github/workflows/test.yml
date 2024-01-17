@@ -30,6 +30,10 @@ jobs:
         os: [ubuntu-latest]
         node: [18, 20]
         eslint: [8]
+        include:
+          - node: 20
+            eslint: ^9.0.0-0
+            os: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2

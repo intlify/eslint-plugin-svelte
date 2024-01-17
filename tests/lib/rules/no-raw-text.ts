@@ -1,12 +1,13 @@
 /**
  * @author Yosuke Ota
  */
-import { RuleTester } from 'eslint'
-import rule = require('../../../lib/rules/no-raw-text')
+import { RuleTester } from '../eslint-compat'
+import rule from '../../../lib/rules/no-raw-text'
+import * as svelteParser from 'svelte-eslint-parser'
 
 const tester = new RuleTester({
-  parser: require.resolve('svelte-eslint-parser'),
-  parserOptions: {
+  languageOptions: {
+    parser: svelteParser,
     ecmaVersion: 2021,
     sourceType: 'module'
   }
@@ -235,7 +236,7 @@ tester.run('no-raw-text', rule as never, {
       code: `
         <script>
         </script>
-        
+
         text at the root of the template
       `,
       errors: [
