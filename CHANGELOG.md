@@ -1,5 +1,11 @@
 ## 0.3.0
 
+## 0.4.0
+
+### Minor Changes
+
+- [#12](https://github.com/intlify/eslint-plugin-svelte/pull/12) [`e0acb96`](https://github.com/intlify/eslint-plugin-svelte/commit/e0acb96fd492bd0b259417ea6a277b73cc4745cb) Thanks [@ota-meshi](https://github.com/ota-meshi)! - feat: add support for eslint v9
+
 ### Minor Changes
 
 - [#9](https://github.com/intlify/eslint-plugin-svelte/pull/9) [`a311f0e`](https://github.com/intlify/eslint-plugin-svelte/commit/a311f0e37616823655a110972ea6978104d0df9e) Thanks [@ccdexcom](https://github.com/ccdexcom)! - Apply rule against root-level strings
