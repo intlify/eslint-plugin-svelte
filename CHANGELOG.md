@@ -1,3 +1,5 @@
+# @intlify/eslint-plugin-svelte
+
 ## 0.4.0
 
 ### Minor Changes
