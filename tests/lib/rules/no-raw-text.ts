@@ -54,6 +54,14 @@ tester.run('no-raw-text', rule as never, {
         { $_('root level translation') }
       `,
       options: []
+    },
+    {
+      code: `<h1>Text</h1>
+      <style>
+        h1 {
+          background: blue;
+        }
+      </style>`
     }
   ],
 

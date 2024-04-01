@@ -185,6 +185,10 @@ function create(context: RuleContext): RuleListener {
       return false
     }
 
+    if (element.type === 'SvelteStyleElement') {
+      return true
+    }
+
     return config.ignoreNodes.includes(
       sourceCode.text.slice(...element.name.range!)
     )
@@ -194,6 +198,7 @@ function create(context: RuleContext): RuleListener {
       | SvAST.SvelteText['parent']
       | SvAST.SvelteMustacheTag['parent']
       | SvAST.SvelteElement
+      | SvAST.SvelteSpecialElement
       | SvAST.SvelteAwaitBlock
       | SvAST.SvelteElseBlockElseIf = node.parent
     while (
@@ -208,7 +213,10 @@ function create(context: RuleContext): RuleListener {
     ) {
       target = target.parent
     }
-    if (target.type === 'SvelteElement') {
+    if (
+      target.type === 'SvelteElement' ||
+      target.type === 'SvelteStyleElement'
+    ) {
       return target
     }
     return null
