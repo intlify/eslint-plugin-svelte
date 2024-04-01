@@ -1,5 +1,11 @@
 # @intlify/eslint-plugin-svelte
 
+## 0.4.1
+
+### Patch Changes
+
+- [#15](https://github.com/intlify/eslint-plugin-svelte/pull/15) [`785a3d8`](https://github.com/intlify/eslint-plugin-svelte/commit/785a3d88e726f8a04630c7a42526783e7b6d3eb2) Thanks [@ota-meshi](https://github.com/ota-meshi)! - fix: false positives for style tag in no-raw-text
+
 ## 0.4.0
 
 ### Minor Changes
