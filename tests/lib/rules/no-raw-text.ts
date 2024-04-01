@@ -56,7 +56,7 @@ tester.run('no-raw-text', rule as never, {
       options: []
     },
     {
-      code: `<h1>Text</h1>
+      code: `
       <style>
         h1 {
           background: blue;
