@@ -1,5 +1,11 @@
 # @intlify/eslint-plugin-svelte
 
+## 0.4.2
+
+### Patch Changes
+
+- [#18](https://github.com/intlify/eslint-plugin-svelte/pull/18) [`d298417`](https://github.com/intlify/eslint-plugin-svelte/commit/d298417c53575ba5fa9043a5a5d6957dd11a01bd) Thanks [@ota-meshi](https://github.com/ota-meshi)! - fix: add support for svelte v5(rc)
+
 ## 0.4.1
 
 ### Patch Changes
