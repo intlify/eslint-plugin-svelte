@@ -54,7 +54,7 @@ jobs:
           # Old Node.js
           - node: 12
             eslint: 8
-            svelte: 4
+            svelte: 3
             os: ubuntu-latest
           - node: 14
             eslint: 8
