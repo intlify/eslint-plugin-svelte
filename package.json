@@ -25,12 +25,12 @@
   },
   "dependencies": {
     "debug": "^4.3.1",
-    "eslint-compat-utils": "^0.4.1",
+    "eslint-compat-utils": "^0.5.1",
     "svelte-eslint-parser": ">=0.9.0 <1.0.0"
   },
   "peerDependencies": {
     "eslint": "^7.0.0 || ^8.0.0-0 || ^9.0.0-0",
-    "svelte": "^3.37.0 || ^4.0.5"
+    "svelte": "^3.37.0 || ^4.0.5 || ^5.0.0-0"
   },
   "peerDependenciesMeta": {
     "svelte": {
@@ -106,5 +106,6 @@
     "prerelease": "yarn build",
     "release": "changeset publish",
     "version:ci": "env-cmd -e version-ci yarn generate && changeset version"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha256.c17d3797fb9a9115bf375e31bfd30058cac6bc9c3b8807a3d8cb2094794b51ca"
 }
