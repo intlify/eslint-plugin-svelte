@@ -23,7 +23,7 @@ jobs:
       - name: Lint docs
         run: yarn lint:docs
   test:
-    name: 'Test for ESLint ${{ matrix.eslint }} on Node.js ${{ matrix.node }} OS: ${{matrix.os}}'
+    name: 'Test for ESLint ${{ matrix.eslint }} with Svelte ${{ matrix.svelte }} on Node.js ${{ matrix.node }} OS: ${{matrix.os}}'
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
