@@ -17,11 +17,47 @@ npm install --save-dev eslint @intlify/eslint-plugin-svelte
 
 ## :rocket: Usage
 
-### Configuration
+### Configuration `eslint.config.[c|m]js`
 
-Configure your `.eslintrc.*` file.
+In ESLint v9, the the default way to configure files is using an `eslint.config.[c|m]js` file, but this can be used starting from ESLint v8.57.0.
 
-For example:
+See also: https://eslint.org/docs/latest/use/configure/configuration-files-new.
+
+Example `eslint.config.js`:
+
+```js
+import intlifySvelte from '@intlify/eslint-plugin-svelte'
+
+export default [
+  // add more generic rulesets here, such as:
+  //...eslintPluginSvelte.configs["flat/recommended"],
+
+  // Recommended
+  ...intlifySvelte.configs['flat/recommended'],
+  {
+    rules: {
+      // override/add rules settings here, such as:
+      '@intlify/svelte/no-raw-text': 'error'
+    }
+  }
+]
+```
+
+See [the rule list](./rules/README.md)
+
+#### Bundle Configurations `eslint.config.[c|m]js`
+
+This plugin provides some predefined configs. You can use the following configs by adding them to `eslint.config.[c|m]js`. (All flat configs in this plugin are provided as arrays, so spread syntax is required when combining them with other configs.)
+
+- `*configs["flat/base"]`: Settings and rules to enable correct ESlint parsing.
+- `*configs["flat/recommended"]`: Above, plus rules to enforce subjective community defaults to ensure consistency.
+
+### Configuration `.eslintrc.*`
+
+Use the `.eslintrc.*` file to configure rules in ESLint < v9. See also:
+https://eslint.org/docs/latest/use/configure/.
+
+Example `.eslintrc.js`:
 
 ```js
 module.export = {
@@ -43,6 +79,13 @@ module.export = {
 ```
 
 See [the rule list](./rules/README.md)
+
+#### Bundle Configurations `eslintrc.*`
+
+This plugin provides some predefined configs. You can use the following configs by adding them to `eslintrc.*`.
+
+- `plugin:@intlify/svelte/base`: Settings and rules to enable correct ESlint parsing.
+- `plugin:@intlify/svelte/recommended`: Above, plus rules to enforce subjective community defaults to ensure consistency.
 
 ::: warning ❗ Attention
 
