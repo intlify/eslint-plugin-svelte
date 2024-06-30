@@ -90,7 +90,7 @@ async function updateRuleDocs(): Promise<void> {
         }
       } else if (rule.recommended) {
         headerLines.push(
-          '- :star: The `"extends": "plugin:@intlify/svelte/recommended"` property in a configuration file enables this rule.'
+          '- :star: The `"extends": "plugin:@intlify/svelte/recommended"` or `*.configs["flat/recommended"]` property in a configuration file enables this rule.'
         )
       }
 
