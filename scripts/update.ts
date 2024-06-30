@@ -11,13 +11,14 @@ import './update-rule-docs'
 import './update-docs-index'
 
 // recommended rules.
-import './update-recommended-rules'
+import './update-legacy-recommended-rules'
+import './update-flat-recommended-rules'
+import './update-flat-base-config'
 import './update-meta'
 import { writeAndFormat } from './lib/write'
 
 // indices.
 for (const pairs of [
-  [resolve(__dirname, '../lib/configs')],
   [resolve(__dirname, '../lib/rules')]
   // [resolve(__dirname, '../lib/utils'), '', true]
 ] as const) {

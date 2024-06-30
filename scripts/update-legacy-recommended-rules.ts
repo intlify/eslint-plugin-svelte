@@ -7,28 +7,28 @@ import { resolve } from 'path'
 import rules from './lib/rules'
 import { writeAndFormat } from './lib/write'
 
-// recommended.ts
+// legacy/recommended.ts
 writeAndFormat(
   resolve(__dirname, '../lib/configs/recommended.ts'),
   `/** DON'T EDIT THIS FILE; was created by scripts. */
-export = {
-  extends: [require.resolve('./base')],
-  parserOptions: {
-    ecmaVersion: 2018,
-    sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true
-    }
-  },
-  env: {
-    browser: true,
-    es6: true
-  },
-  rules: {
-    ${rules
-      .filter(rule => rule.recommended)
-      .map(rule => `'${rule.id}': 'warn',`)
-      .join('\n        ')}
-  },
-}`
+  export = {
+    extends: [require.resolve('./base')],
+    parserOptions: {
+      ecmaVersion: 2018,
+      sourceType: 'module',
+      ecmaFeatures: {
+        jsx: true
+      }
+    },
+    env: {
+      browser: true,
+      es6: true
+    },
+    rules: {
+      ${rules
+        .filter(rule => rule.recommended)
+        .map(rule => `'${rule.id}': 'warn',`)
+        .join('\n        ')}
+    },
+  }`
 )
