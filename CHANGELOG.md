@@ -1,5 +1,11 @@
 # @intlify/eslint-plugin-svelte
 
+## 0.5.0
+
+### Minor Changes
+
+- [#20](https://github.com/intlify/eslint-plugin-svelte/pull/20) [`9725a74`](https://github.com/intlify/eslint-plugin-svelte/commit/9725a74e952fafd433a9d8a46b2456f198a279c7) Thanks [@codiini](https://github.com/codiini)! - feat: support eslint v9 flat config in plugin
+
 ## 0.4.2
 
 ### Patch Changes

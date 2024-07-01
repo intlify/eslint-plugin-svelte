@@ -4,4 +4,4 @@
  * in order to update its content execute "pnpm run update"
  */
 export const name = '@intlify/eslint-plugin-svelte' as const
-export const version = '0.4.2' as const
+export const version = '0.5.0' as const
