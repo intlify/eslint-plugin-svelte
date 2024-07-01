@@ -1,6 +1,6 @@
 # Available Rules
 
-- :star: mark: the rule which is enabled by `plugin:@intlify/svelte/recommended` preset.
+- :star: mark: the rule which is enabled by the `plugin:@intlify/svelte/recommended` or `*.configs.["flat/recommended"]` preset.
 - :black_nib: mark: the rule which is fixable by `eslint --fix` command.
 
 ## Recommended

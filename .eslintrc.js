@@ -127,6 +127,10 @@ module.exports = {
       files: ['**/*.md/*.*'],
       rules: {
         'prettier/prettier': 'off'
+      },
+      parserOptions: {
+        ecmaVersion: 2021,
+        sourceType: 'module'
       }
     }
   ]
