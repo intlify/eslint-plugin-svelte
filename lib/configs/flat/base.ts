@@ -1,7 +1,7 @@
 /** DON'T EDIT THIS FILE; was created by scripts. */
 export = [
   {
-    name: '@intlify/vue-i18n:base:setup',
+    name: '@intlify/svelte:base:setup',
     plugins: {
       get '@intlify/svelte'() {
         return require('../../index')
