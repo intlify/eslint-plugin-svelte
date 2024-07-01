@@ -124,5 +124,20 @@ export default [
       ecmaVersion: 2021,
       sourceType: 'module'
     }
+  },
+  {
+    ignores: [
+      '!/docs/.vuepress/',
+      '!/.github/',
+      '!/.vscode/',
+      '/.nyc_output/',
+      '/assets/',
+      '/coverage/',
+      '/dist/',
+      '/docs/.vuepress/dist/',
+      '/node_modules/',
+      '/tests-integrations/config-recommended/'
+      // '/tests/fixtures' //Do not specify it here for the test to work
+    ]
   }
 ]
