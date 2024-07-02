@@ -1,5 +1,5 @@
 {
-  "name": "integration-test-for-config-recommended",
+  "name": "integration-test-for-legacy-config",
   "private": true,
   "version": "1.0.0",
   "description": "",
@@ -7,7 +7,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@intlify/eslint-plugin-svelte": "file:../..",
-    "eslint": "^7.4.0"
+    "@intlify/eslint-plugin-svelte": "file:../../..",
+    "eslint": "^8.57.0"
   }
 }
