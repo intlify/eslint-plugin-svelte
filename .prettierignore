@@ -8,9 +8,10 @@
 /docs/.vuepress/dist
 /node_modules
 /tests/fixtures
-/tests-integrations/config-recommended
+/tests-integrations
 
 # ignore files
 /CHANGELOG.md
 /.github/ISSUE_TEMPLATE/
 /.changeset/**/*.md
+/pnpm-lock.yaml

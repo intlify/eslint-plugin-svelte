@@ -1,6 +1,7 @@
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import markdown from 'eslint-plugin-markdown'
 import tseslint from 'typescript-eslint'
+import process from 'process'
 
 export default [
   eslintPluginPrettierRecommended,
@@ -103,40 +104,41 @@ export default [
       '@typescript-eslint/no-non-null-assertion': 'off',
       '@typescript-eslint/consistent-type-imports': 'error'
     },
-    parserOptions: {
-      parser: tseslint.parser
+    languageOptions: {
+      parserOptions: {
+        parser: tseslint.parser
+      }
     }
   }),
   {
     files: ['*.vue'],
     parser: 'vue-eslint-parser',
-    parserOptions: {
+    languageOptions: {
       ecmaVersion: 2021,
       sourceType: 'module'
     }
   },
   {
-    files: ['**/*.md/*.*'],
+    files: ['js', 'ts', 'vue', 'svelte'].map(ext => [
+      `**/*.md/*.${ext}`
+    ]),
+    processor: 'markdown/markdown',
     rules: {
       'prettier/prettier': 'off'
-    },
-    parserOptions: {
-      ecmaVersion: 2021,
-      sourceType: 'module'
     }
   },
   {
     ignores: [
-      '!/docs/.vuepress/',
-      '!/.github/',
-      '!/.vscode/',
-      '/.nyc_output/',
-      '/assets/',
-      '/coverage/',
-      '/dist/',
-      '/docs/.vuepress/dist/',
-      '/node_modules/',
-      '/tests-integrations/'
+      '!docs/.vuepress/',
+      '!.github/',
+      '!.vscode/',
+      '.nyc_output/',
+      'assets/',
+      'coverage/',
+      'dist/',
+      'docs/.vuepress/dist/',
+      'node_modules/',
+      'tests-integrations/'
     ]
   }
 ]
