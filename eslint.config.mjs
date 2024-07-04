@@ -119,9 +119,7 @@ export default [
     }
   },
   {
-    files: ['js', 'ts', 'vue', 'svelte'].map(ext => [
-      `**/*.md/*.${ext}`
-    ]),
+    files: ['js', 'ts', 'vue', 'svelte'].map(ext => [`**/*.md/*.${ext}`]),
     processor: 'markdown/markdown',
     rules: {
       'prettier/prettier': 'off'
