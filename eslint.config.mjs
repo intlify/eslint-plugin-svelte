@@ -136,8 +136,7 @@ export default [
       '/dist/',
       '/docs/.vuepress/dist/',
       '/node_modules/',
-      '/tests-integrations/config-recommended/'
-      // '/tests/fixtures' //Do not specify it here for the test to work
+      '/tests-integrations/'
     ]
   }
 ]

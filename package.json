@@ -105,7 +105,7 @@
     "test": "mocha --require ts-node/register \"./tests/**/*.ts\"",
     "test:debug": "mocha --require ts-node/register/transpile-only \"./tests/**/*.ts\"",
     "test:coverage": "nyc mocha --require ts-node/register \"./tests/**/*.ts\" --timeout 60000",
-    "test:integrations": "mocha ./tests-integrations/*.js --timeout 60000",
+    "test:integrations": "mocha --require ts-node/register \"./tests-integrations/*.ts\" --timeout 60000",
     "prerelease": "yarn build",
     "release": "changeset publish",
     "version:ci": "env-cmd -e version-ci yarn generate && changeset version"
