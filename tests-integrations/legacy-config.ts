@@ -1,6 +1,6 @@
-import cp from 'node:child_process'
-import path from 'node:path'
-import assert from 'node:assert'
+import cp from 'child_process'
+import path from 'path'
+import assert from 'assert'
 
 const TEST_CWD = path.join(__dirname, 'legacy-config')
 
