@@ -9,6 +9,7 @@
   "type": "module",
   "devDependencies": {
     "@intlify/eslint-plugin-svelte": "file:../..",
-    "eslint": "^9.6.0"
+    "eslint": "^9.6.0",
+    "svelte-eslint-parser": "^0.39.2"
   }
 }
