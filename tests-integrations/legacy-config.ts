@@ -30,7 +30,7 @@ describe('Integration with Legacy config', () => {
     ) {
       return
     }
-    const cliResult = cp.execSync(`${ESLINT} src/* --ext  --format=json`, {
+    const cliResult = cp.execSync(`${ESLINT} src/* --ext .js,.ts,.svelte --format=json`, {
       encoding: 'utf-8',
       env: { ...process.env,  ESLINT_USE_FLAT_CONFIG: 'false' }
     })
