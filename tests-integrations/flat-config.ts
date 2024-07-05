@@ -11,10 +11,15 @@ describe('Integration with flat config', () => {
   let originalCwd: string
 
   before(() => {
-    originalCwd = process.cwd()
-    process.chdir(TEST_CWD)
-    cp.execSync('yarn', { stdio: 'inherit' })
-  })
+    originalCwd = process.cwd();
+    process.chdir(TEST_CWD);
+    try {
+      cp.execSync('yarn', { stdio: 'inherit' });
+    } catch (error) {
+      console.error('Error running yarn:', error);
+      throw error;
+    }
+  });
   after(() => {
     originalCwd && process.chdir(originalCwd)
   })
@@ -36,7 +41,7 @@ describe('Integration with flat config', () => {
 
     const result = JSON.parse(cliResult)
 
-    const aSvelte = result.results.find(
+    const aSvelte = result.find(
       (r: { filePath: string }) => path.basename(r.filePath) === 'a.svelte'
     )
     assert.strictEqual(aSvelte.messages.length, 1)
