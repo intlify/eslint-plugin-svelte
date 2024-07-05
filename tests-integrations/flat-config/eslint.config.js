@@ -9,8 +9,7 @@ export default [
       parser: svelteParser
     },
     rules: {
-      //Using warn instead of error as running eslint using execSync causes tests to fail.
-      '@intlify/svelte/no-raw-text': 'warn'
+      '@intlify/svelte/no-raw-text': 'error'
     }
   }
 ]
