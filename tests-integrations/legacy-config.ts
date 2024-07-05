@@ -35,7 +35,7 @@ describe('Integration with Legacy config', () => {
       env: { ...process.env,  ESLINT_USE_FLAT_CONFIG: 'false' }
     })
     const result = JSON.parse(cliResult)
-    const aSvelte = result.results.find(
+    const aSvelte = result.find(
       (r: { filePath: string }) => path.basename(r.filePath) === 'a.svelte'
     )
     assert.strictEqual(aSvelte.messages.length, 1)
