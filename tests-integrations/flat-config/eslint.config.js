@@ -9,7 +9,7 @@ export default [
       parser: svelteParser
     },
     rules: {
-      '@intlify/svelte/no-raw-text': 'error'
+      '@intlify/svelte/no-raw-text': 'warn'
     }
   }
 ]
