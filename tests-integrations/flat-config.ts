@@ -12,7 +12,7 @@ describe('Integration with flat config', () => {
     originalCwd = process.cwd();
     process.chdir(TEST_CWD);
     try {
-      cp.execSync('yarn', { stdio: 'inherit' });
+      cp.execSync('yarn --ignore-engines --ignore-scripts', { stdio: 'inherit' });
     } catch (error) {
       console.error('Error running yarn:', error);
       throw error;
