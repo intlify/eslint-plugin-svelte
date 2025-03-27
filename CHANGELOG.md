@@ -1,5 +1,21 @@
 # @intlify/eslint-plugin-svelte
 
+## 1.0.0
+
+### Major Changes
+
+- [#26](https://github.com/intlify/eslint-plugin-svelte/pull/26) [`38cd2b3`](https://github.com/intlify/eslint-plugin-svelte/commit/38cd2b3ec5825c6e4fca2b665f813784026804fa) Thanks [@ota-meshi](https://github.com/ota-meshi)! - Drop support legacy config
+
+- [#25](https://github.com/intlify/eslint-plugin-svelte/pull/25) [`e32558c`](https://github.com/intlify/eslint-plugin-svelte/commit/e32558c6434502bb597f242df9e26300568331e5) Thanks [@ota-meshi](https://github.com/ota-meshi)! - drop support for old eslint and node.js
+
+- [#26](https://github.com/intlify/eslint-plugin-svelte/pull/26) [`38cd2b3`](https://github.com/intlify/eslint-plugin-svelte/commit/38cd2b3ec5825c6e4fca2b665f813784026804fa) Thanks [@ota-meshi](https://github.com/ota-meshi)! - ESM only package
+
+- [#27](https://github.com/intlify/eslint-plugin-svelte/pull/27) [`7227829`](https://github.com/intlify/eslint-plugin-svelte/commit/7227829f1456bc9e871e9beb781451d4bb5884a3) Thanks [@ota-meshi](https://github.com/ota-meshi)! - feat!: Upgrade svelte-eslint-parser to v1
+
+### Minor Changes
+
+- [#30](https://github.com/intlify/eslint-plugin-svelte/pull/30) [`dfddfc3`](https://github.com/intlify/eslint-plugin-svelte/commit/dfddfc33753e1220e74b7c645dd899e9d6fe18a4) Thanks [@ota-meshi](https://github.com/ota-meshi)! - feat: upgrade deps
+
 ## 0.5.0
 
 ### Minor Changes
