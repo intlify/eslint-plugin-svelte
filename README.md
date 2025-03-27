@@ -7,6 +7,12 @@
 </p>
 <p align="center">ESLint plugin for internationalization with Svelte</p>
 
+<h2 align="center">
+
+[Online Demo](https://eslint-online-playground.netlify.app/#https://github.com/intlify/eslint-plugin-svelte/tree/main/playground)
+
+</h2>
+
 ## :book: Documentation
 
 See [here](https://github.com/intlify/eslint-plugin-svelte/blob/main/docs/README.md)
