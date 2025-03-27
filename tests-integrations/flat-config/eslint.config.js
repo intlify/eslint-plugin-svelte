@@ -2,7 +2,7 @@ import intlifySvelte from '@intlify/eslint-plugin-svelte'
 import svelteParser from 'svelte-eslint-parser'
 
 export default [
-  ...intlifySvelte.configs['flat/recommended'],
+  ...intlifySvelte.configs.recommended,
   {
     files: ['**/*.svelte', '*.svelte'],
     languageOptions: {
