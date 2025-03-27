@@ -17,10 +17,7 @@ import './update-meta.js'
 import { writeAndFormat } from './lib/write.js'
 
 // indices.
-for (const pairs of [
-  [resolve(import.meta.dirname, '../lib/rules')]
-  // [resolve(__dirname, '../lib/utils'), '', true]
-] as const) {
+for (const pairs of [[resolve(import.meta.dirname, '../lib/rules')]] as const) {
   const [dirPath, prefix = undefined, all = undefined] = pairs
   writeAndFormat(`${dirPath}.ts`, createIndex(dirPath, prefix, all))
 }
