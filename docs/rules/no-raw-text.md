@@ -18,8 +18,6 @@ This rule encourage i18n in about the application needs to be localized.
 
 :-1: Examples of **incorrect** code for this rule:
 
-<eslint-code-block>
-
 <!-- eslint-skip -->
 
 ```html
@@ -30,11 +28,7 @@ This rule encourage i18n in about the application needs to be localized.
 <p>hello</p>
 ```
 
-</eslint-code-block>
-
 :+1: Examples of **correct** code for this rule:
-
-<eslint-code-block>
 
 <!-- eslint-skip -->
 
@@ -45,8 +39,6 @@ This rule encourage i18n in about the application needs to be localized.
 <!-- ✓ GOOD -->
 <p>{ $_('hello') }</p>
 ```
-
-</eslint-code-block>
 
 ## :gear: Options
 
@@ -81,8 +73,6 @@ This rule encourage i18n in about the application needs to be localized.
 
 ### `attributes`
 
-<eslint-code-block>
-
 <!-- eslint-skip -->
 
 ```svelte
@@ -93,10 +83,6 @@ This rule encourage i18n in about the application needs to be localized.
 <MyInput label="hello" />
 <AnyComponent label="hello" />
 ```
-
-</eslint-code-block>
-
-<eslint-code-block>
 
 <!-- eslint-skip -->
 
@@ -109,8 +95,6 @@ This rule encourage i18n in about the application needs to be localized.
 <!-- ✓ GOOD -->
 <OtherComponent label="hello" />
 ```
-
-</eslint-code-block>
 
 ## :rocket: Version
 
