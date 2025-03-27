@@ -17,22 +17,24 @@ export type RuleInfo = {
   replacedBy: string[] | null
 }
 
-const rules: RuleInfo[] = readdirSync(resolve(__dirname, '../../lib/rules'))
-  .map(fileName => basename(fileName, '.ts'))
-  .map(name => {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const meta = require(`../../lib/rules/${name}`).meta
-    return {
-      id: `@intlify/svelte/${name}`,
-      name,
-      category: String(meta.docs.category),
-      description: String(meta.docs.description),
-      recommended: Boolean(meta.docs.recommended),
-      fixable: Boolean(meta.fixable),
-      deprecated: Boolean(meta.deprecated),
-      replacedBy: (meta.docs.replacedBy as string[]) || null
-    }
-  })
+const rules: RuleInfo[] = await Promise.all(
+  readdirSync(resolve(import.meta.dirname, '../../lib/rules'))
+    .map(fileName => basename(fileName, '.ts'))
+    .map(async name => {
+      const meta = ((await import(`../../lib/rules/${name}`)) as any).default
+        .meta
+      return {
+        id: `@intlify/svelte/${name}`,
+        name,
+        category: String(meta.docs.category),
+        description: String(meta.docs.description),
+        recommended: Boolean(meta.docs.recommended),
+        fixable: Boolean(meta.fixable),
+        deprecated: Boolean(meta.deprecated),
+        replacedBy: (meta.docs.replacedBy as string[]) || null
+      }
+    })
+)
 
 export default rules
 export const withCategories = [

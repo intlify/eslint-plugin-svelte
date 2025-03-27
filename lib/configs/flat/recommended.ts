@@ -1,6 +1,6 @@
 /** DON'T EDIT THIS FILE; was created by scripts. */
-import config from './base'
-export = [
+import config from './base.js'
+export default [
   ...config,
   {
     name: '@intlify/svelte:recommended:setup',

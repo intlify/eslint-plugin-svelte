@@ -1,10 +1,12 @@
 /** DON'T EDIT THIS FILE; was created by scripts. */
-export = [
+import parser from 'svelte-eslint-parser'
+import plugin from '../../index.js'
+export default [
   {
     name: '@intlify/svelte:base:setup',
     plugins: {
       get '@intlify/svelte'() {
-        return require('../../index')
+        return plugin
       }
     }
   },
@@ -12,7 +14,7 @@ export = [
     name: '@intlify/svelte:base:svelte',
     files: ['*.svelte'],
     languageOptions: {
-      parser: require('svelte-eslint-parser')
+      parser: parser
     }
   }
 ]

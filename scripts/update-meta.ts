@@ -1,9 +1,11 @@
 import path from 'path'
-import { name, version } from '../package.json'
-import { getNewVersion } from './lib/changesets-util'
-import { writeAndFormat } from './lib/write'
+import packageJson from '../package.json' with { type: 'json' }
+import { getNewVersion } from './lib/changesets-util.js'
+import { writeAndFormat } from './lib/write.js'
 
-const META_PATH = path.join(__dirname, '../lib/meta.ts')
+const { name, version } = packageJson
+
+const META_PATH = path.join(import.meta.dirname, '../lib/meta.ts')
 
 void main()
 

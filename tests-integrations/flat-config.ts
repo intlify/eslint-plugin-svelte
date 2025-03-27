@@ -3,7 +3,9 @@ import path from 'path'
 import assert from 'assert'
 import semver from 'semver'
 import { readPackageJson } from './helper'
+import { fileURLToPath } from 'url'
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const TEST_CWD = path.join(__dirname, 'flat-config')
 const ESLINT = `.${path.sep}node_modules${path.sep}.bin${path.sep}eslint`
 
