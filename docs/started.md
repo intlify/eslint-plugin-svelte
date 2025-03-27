@@ -10,8 +10,8 @@ npm install --save-dev eslint @intlify/eslint-plugin-svelte
 
 ::: tip Requirements
 
-- ESLint v7.0.0 or later
-- Node.js v12.x, v14.x or later
+- ESLint v9.22.0 or later
+- Node.js v18.20, v20.10.0, v21.1.0, or later
 
 :::
 
@@ -111,7 +111,7 @@ For example, if you are using the `"@babel/eslint-parser"`, configure it as foll
 ```js
 module.exports = {
   // ...
-  extends: ['plugin:@ota-meshi/svelte/recommended'],
+  extends: ['plugin:svelte/recommended'],
   // ...
   parser: '@babel/eslint-parser',
   // Add an `overrides` section to add a parser configuration for svelte.
@@ -131,7 +131,7 @@ For example, if you are using the `"@typescript-eslint/parser"`, and if you want
 ```js
 module.exports = {
   // ...
-  extends: ['plugin:@ota-meshi/svelte/recommended'],
+  extends: ['plugin:svelte/recommended'],
   // ...
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -178,22 +178,11 @@ module.exports = {
 }
 ```
 
-See also [https://github.com/ota-meshi/svelte-eslint-parser#readme](https://github.com/ota-meshi/svelte-eslint-parser#readme).
-
-### Running ESLint from command line
-
-If you want to run `eslint` from command line, make sure you include the `.svelte` extension using [the `--ext` option](https://eslint.org/docs/user-guide/configuring#specifying-file-extensions-to-lint) or a glob pattern because ESLint targets only `.js` files by default.
-
-Examples:
-
-```bash
-eslint --ext .js,.svelte src
-eslint "src/**/*.{js,svelte}"
-```
+See also <https://github.com/sveltejs/svelte-eslint-parser#readme>.
 
 ## 🛸 More Plugins
 
-### [@ota-meshi/eslint-plugin-svelte](https://ota-meshi.github.io/eslint-plugin-svelte/)
+### [eslint-plugin-svelte](https://sveltejs.github.io/eslint-plugin-svelte/)
 
 ESLint plugin for Svelte compatible with `@intlify/eslint-plugin-svelte`.
 Use it if you want ESLint to do more checks on your Svelte files.
