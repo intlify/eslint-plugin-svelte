@@ -18,7 +18,7 @@ export default [
   },
   {
     name: '@intlify/svelte:base:svelte',
-    files: ['*.svelte'],
+    files: ['**/*.svelte', '*.svelte'],
     languageOptions: {
         parser: parser,
     }
