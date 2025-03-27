@@ -3,8 +3,8 @@
  */
 import type { AST as SvAST } from 'svelte-eslint-parser'
 import type ESTree from 'estree'
-import type { RuleContext, RuleListener } from '../types'
-import { defineRule } from '../utils'
+import type { RuleContext, RuleListener } from '../types/index.js'
+import { defineRule } from '../utils/index.js'
 
 type LiteralValue = ESTree.Literal['value']
 type StaticTemplateLiteral = ESTree.TemplateLiteral & {
@@ -156,7 +156,7 @@ function parseTargetAttrs(
 }
 
 function create(context: RuleContext): RuleListener {
-  const sourceCode = context.getSourceCode()
+  const sourceCode = context.sourceCode
 
   const config: Config = {
     attributes: [],
@@ -252,7 +252,7 @@ function create(context: RuleContext): RuleListener {
   }
 }
 
-export = defineRule('no-raw-text', {
+export default defineRule('no-raw-text', {
   meta: {
     type: 'suggestion',
     docs: {

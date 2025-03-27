@@ -25,13 +25,13 @@ function createIndex(dirPath: string, prefix = '', all = false): string {
 ${tsFiles
   .map(
     id =>
-      `import ${all ? '* as ' : ''}${camelCase(id)} from './${dirName}/${id}';`
+      `import ${all ? '* as ' : ''}${camelCase(id)} from './${dirName}/${id}.js';`
   )
   .join('\n')}
 
-export = {
-    ${tsFiles.map(id => `'${prefix}${id}': ${camelCase(id)},`).join('\n    ')}
-  }
+export default {
+  ${tsFiles.map(id => `'${prefix}${id}': ${camelCase(id)},`).join('\n    ')}
+}
   `
 }
 

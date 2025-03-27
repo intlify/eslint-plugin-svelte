@@ -3,7 +3,7 @@ import type {
   NodeWithLoc,
   CursorWithSkipOptions,
   CursorWithCountOptions
-} from './eslint'
+} from './eslint.js'
 
 export interface TokenStore {
   getTokenByRangeStart(

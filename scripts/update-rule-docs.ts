@@ -5,9 +5,9 @@
  */
 import { writeFileSync, readFileSync } from 'fs'
 import { join } from 'path'
-import type { RuleInfo } from './lib/rules'
-import rules from './lib/rules'
-import { getNewVersion } from './lib/changesets-util'
+import type { RuleInfo } from './lib/rules.js'
+import rules from './lib/rules.js'
+import { getNewVersion } from './lib/changesets-util.js'
 const PLACE_HOLDER = /#[^\n]*\n+> .+\n+(?:- .+\n)*\n*/u
 
 updateRuleDocs()
@@ -35,7 +35,7 @@ async function updateRuleDocs(): Promise<void> {
     private since: Promise<string | null>
     constructor(rule: RuleInfo) {
       this.rule = rule
-      this.filePath = join(__dirname, `../docs/rules/${rule.name}.md`)
+      this.filePath = join(import.meta.dirname, `../docs/rules/${rule.name}.md`)
       this.content = readFileSync(this.filePath, 'utf8')
       this.since = pickSince(this.content)
     }
@@ -90,7 +90,7 @@ async function updateRuleDocs(): Promise<void> {
         }
       } else if (rule.recommended) {
         headerLines.push(
-          '- :star: The `"extends": "plugin:@intlify/svelte/recommended"` or `*.configs["flat/recommended"]` property in a configuration file enables this rule.'
+          '- :star: `*.configs.recommended` property in a configuration file enables this rule.'
         )
       }
 

@@ -5,8 +5,7 @@
 import type { Rule } from 'eslint'
 import { dirname, extname } from 'path'
 import { existsSync } from 'fs'
-import type { RuleContext, RuleListener } from '../types'
-import { getFilename, getSourceCode } from 'eslint-compat-utils'
+import type { RuleContext, RuleListener } from '../types/index.js'
 
 const UNEXPECTED_ERROR_LOCATION = { line: 1, column: 0 }
 
@@ -38,9 +37,9 @@ export function defineRule(
       }
     },
     create(context) {
-      const sourceCode = getSourceCode(context)
+      const sourceCode = context.sourceCode
       if (!sourceCode.parserServices.isSvelte) {
-        const filename = getFilename(context)
+        const filename = context.filename
         if (isSvelteFile(filename)) {
           context.report({
             loc: UNEXPECTED_ERROR_LOCATION,

@@ -8,7 +8,7 @@ since: v0.0.1
 
 > disallow to string literal in template
 
-- :star: The `"extends": "plugin:@intlify/svelte/recommended"` or `*.configs["flat/recommended"]` property in a configuration file enables this rule.
+- :star: `*.configs.recommended` property in a configuration file enables this rule.
 
 This rule warns the usage of string literal.
 

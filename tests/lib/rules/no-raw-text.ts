@@ -1,8 +1,8 @@
 /**
  * @author Yosuke Ota
  */
-import { RuleTester } from '../eslint-compat'
-import rule from '../../../lib/rules/no-raw-text'
+import { RuleTester } from 'eslint'
+import rule from '../../../lib/rules/no-raw-text.js'
 import * as svelteParser from 'svelte-eslint-parser'
 
 const tester = new RuleTester({

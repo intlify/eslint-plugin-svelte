@@ -1,7 +1,7 @@
 import type { AST as SvAST } from 'svelte-eslint-parser'
 import type ESTree from 'estree'
 import type { Rule } from 'eslint'
-import type { TokenStore } from './types'
+import type { TokenStore } from './types.js'
 
 export interface Position {
   /** >= 1 */
@@ -46,16 +46,13 @@ export interface RuleListener {
 }
 
 export interface RuleContext {
-  id: string
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   options: any[]
-  parserPath: string
   parserServices: {
     isSvelte?: true
   }
-  getFilename(): string
-  getSourceCode(): SourceCode
-  getScope(): Scope
+  filename: string
+  sourceCode: SourceCode
   report(descriptor: ReportDescriptor): void
 }
 

@@ -4,22 +4,21 @@
  * Forked by https://github.com/mysticatea/eslint-plugin-eslint-comments/tree/master/scripts/update.js
  */
 import { resolve } from 'path'
-import { createIndex } from './lib/utils'
+import { createIndex } from './lib/utils.js'
 
 // docs.
-import './update-rule-docs'
-import './update-docs-index'
+import './update-rule-docs.js'
+import './update-docs-index.js'
 
 // recommended rules.
-import './update-legacy-recommended-rules'
-import './update-flat-recommended-rules'
-import './update-flat-base-config'
-import './update-meta'
-import { writeAndFormat } from './lib/write'
+import './update-flat-recommended-rules.js'
+import './update-flat-base-config.js'
+import './update-meta.js'
+import { writeAndFormat } from './lib/write.js'
 
 // indices.
 for (const pairs of [
-  [resolve(__dirname, '../lib/rules')]
+  [resolve(import.meta.dirname, '../lib/rules')]
   // [resolve(__dirname, '../lib/utils'), '', true]
 ] as const) {
   const [dirPath, prefix = undefined, all = undefined] = pairs

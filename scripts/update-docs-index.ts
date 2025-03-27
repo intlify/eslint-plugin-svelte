@@ -5,8 +5,8 @@
  */
 import { writeFileSync } from 'fs'
 import { resolve } from 'path'
-import type { RuleInfo } from './lib/rules'
-import { withCategories } from './lib/rules'
+import type { RuleInfo } from './lib/rules.js'
+import { withCategories } from './lib/rules.js'
 
 function toTableRow(rule: RuleInfo) {
   const mark = `${rule.recommended ? ':star:' : ''}${
@@ -34,7 +34,7 @@ ${rules.map(toTableRow).join('\n')}
 }
 
 writeFileSync(
-  resolve(__dirname, '../docs/rules/README.md'),
+  resolve(import.meta.dirname, '../docs/rules/README.md'),
   `# Available Rules
 
 - :star: mark: the rule which is enabled by the \`plugin:@intlify/svelte/recommended\` or \`*.configs.["flat/recommended"]\` preset.

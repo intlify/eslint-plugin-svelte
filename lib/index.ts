@@ -2,23 +2,19 @@
  * @fileoverview ESLint plugin for internationalization with Svelte
  * @author Yosuke Ota
  */
-import legacyBase from './configs/base'
-import legacyRecommended from './configs/recommended'
-import flatBase from './configs/flat/base'
-import flatRecommended from './configs/flat/recommended'
-import rules from './rules'
-import * as meta from './meta'
+import flatBase from './configs/flat/base.js'
+import flatRecommended from './configs/flat/recommended.js'
+import rules from './rules.js'
+import * as meta from './meta.js'
 
-export = {
-  meta,
-  // eslintrc configs
-  configs: {
-    base: legacyBase,
-    recommended: legacyRecommended,
+export const configs = {
+  // flat configs
+  base: flatBase,
+  recommended: flatRecommended,
 
-    // flat configs
-    'flat/base': flatBase,
-    'flat/recommended': flatRecommended
-  },
-  rules
+  // Backward compatibility
+  'flat/base': flatBase,
+  'flat/recommended': flatRecommended
 }
+export { meta, rules }
+export default { configs, meta, rules }
