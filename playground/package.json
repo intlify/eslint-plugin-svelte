@@ -3,7 +3,6 @@
   "devDependencies": {
     "@eslint/js": "latest",
     "eslint": "latest",
-    "@intlify/eslint-plugin-svelte": "latest",
-    "svelte-i18n": "^4.0.1"
+    "@intlify/eslint-plugin-svelte": "latest"
   }
 }
