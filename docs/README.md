@@ -4,4 +4,4 @@
 
 - 👉 Go to [Get Started](./started.md)
 
-- 👉 Try it out in [Online Demo](https://eslint-online-playground.netlify.app/#https://github.com/intlify/eslint-plugin-svelte/tree/main/playground)
+- 👉 Try it out in [Online Demo](https://eslint-online-playground.netlify.app/#@intlify/eslint-plugin-svelte)

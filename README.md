@@ -9,7 +9,7 @@
 
 <h2 align="center">
 
-[Online Demo](https://eslint-online-playground.netlify.app/#https://github.com/intlify/eslint-plugin-svelte/tree/main/playground)
+[Online Demo](https://eslint-online-playground.netlify.app/#@intlify/eslint-plugin-svelte)
 
 </h2>
 
