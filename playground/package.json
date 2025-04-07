@@ -2,7 +2,8 @@
   "type": "module",
   "devDependencies": {
     "@eslint/js": "latest",
+    "@intlify/eslint-plugin-svelte": "latest",
     "eslint": "latest",
-    "@intlify/eslint-plugin-svelte": "latest"
+    "svelte": "latest"
   }
 }
